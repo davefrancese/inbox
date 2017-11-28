@@ -1,0 +1,24 @@
+<div ng-controller="showMail as ctrl">
+  <tool-bar mail="ctrl.mail"></tool-bar>
+  <div ng-repeat="mail in ctrl.mail" class="row message  read-{{mail.read}} selected-{{mail.selected}}">
+    <div class="col-xs-1">
+      <div class="row">
+        <div class="col-xs-2">
+          <input ng-model="mail.selected" type="checkbox" name="checkbox" ng-class"{'message.selected': 'mail.selected'}"/>
+        </div>
+        <div class="col-xs-2" ng-if="mail.starred == true">
+            <i class="star fa fa-star" ng-click="mail.starred = false"></i>
+          </div>
+        <div class="col-xs-2" ng-if="mail.starred == false">
+          <i class="star fa fa-star-o" ng-click="mail.starred = true"></i>
+        </div>
+      </div>
+    </div>
+    <div class="col-xs-11" >
+      <span class="label label-warning" ng-repeat="label in mail.labels" ng-model="$ctrl.labels">{{label}}</span>
+      <a href="#">
+        {{mail.subject}}
+      </a>
+    </div>
+  </div>
+</div>

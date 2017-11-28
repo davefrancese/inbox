@@ -1,0 +1,34 @@
+<div class="row toolbar" ng-controller="toolBar as ctrl">
+  <div class="col-md-12">
+    <p class="pull-right" ng-model="mail.read">
+      <span class="badge badge"></span>
+      unread messages
+    </p>
+
+    <a class="btn btn-danger">
+      <i class="fa fa-plus"></i></span>
+    </a>
+
+    <button class="btn btn-default" ng-click="ctrl.selectAll($ctrl.mail)">
+      <i class="fa fa-minus-square-o"></i>
+    </button>
+
+    <button class="btn btn-default" ng-if="(ctrl.totalSelected($ctrl.mail)==0)">TEST</button>
+
+    <button class="btn btn-default" ng-click='ctrl.markRead($ctrl.mail)'>Mark As Read</button>
+
+    <button class="btn btn-default" ng-click='ctrl.markUnread($ctrl.mail)'>Mark As Unread</button>
+
+    <select class="form-control label-select" ng-options="label.label as label.label for label in ctrl.labels track by label.id" ng-model="labels" ng-change="ctrl.selectLabel(labels, $ctrl.mail)">
+      <option value="">Apply label</option>
+    </select>
+
+    <select class="form-control label-select" ng-options="label.label as label.label for label in ctrl.labels track by label.id" ng-model="rlabels" ng-change="ctrl.removeLabel(rlabels, $ctrl.mail)">
+      <option value="">Remove label</option>
+    </select>
+
+    <button class="btn btn-default" ng-click="ctrl.delete($ctrl.mail)">
+      <i class="fa fa-trash-o"></i>
+    </button>
+  </div>
+</div>
