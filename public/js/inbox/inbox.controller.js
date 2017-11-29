@@ -2,7 +2,7 @@
   angular.module('app')
     .controller('showMail', showMail);
 
-    function showMail() {
+    function showMail(mainService) {
       const vm = this;
 
       mainService.mail()
